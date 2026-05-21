@@ -45,18 +45,33 @@
 
   <header class="header">
     <a href="#" class="logo">Mal<span>Su</span></a>
-    <nav class="nav">
+    <nav class="nav-desktop" aria-label="Основное меню">
       <a href="#albums">Альбомы</a>
       <a href="#team">О нас</a>
       <a href="#order">На заказ</a>
       <a href="#contact">Контакты</a>
       <a href="#listen" class="nav-cta">Слушать</a>
     </nav>
-    <button class="menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false">
-      <span></span><span></span><span></span>
+    <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="menu-btn__icon" aria-hidden="true"></span>
+      <span class="menu-btn__text">Меню</span>
     </button>
   </header>
-  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+  <aside class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__head">
+      <span class="mobile-menu__title">Навигация</span>
+      <button type="button" class="mobile-menu__close" id="menu-close" aria-label="Закрыть меню">✕</button>
+    </div>
+    <nav class="mobile-menu__nav">
+      <a href="#albums">Альбомы</a>
+      <a href="#team">О нас</a>
+      <a href="#order">На заказ</a>
+      <a href="#contact">Контакты</a>
+      <a href="#listen" class="mobile-menu__cta">Слушать</a>
+    </nav>
+  </aside>
 
   <main>
     <section class="hero">

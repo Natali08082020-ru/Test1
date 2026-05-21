@@ -1,5 +1,6 @@
-const menuBtn = document.querySelector(".menu-btn");
-const nav = document.querySelector(".nav");
+const menuBtn = document.getElementById("menu-btn");
+const menuClose = document.getElementById("menu-close");
+const mobileMenu = document.getElementById("mobile-menu");
 const TELEGRAM_USER = "natali08082020";
 const TELEGRAM_URL = `https://t.me/${TELEGRAM_USER}`;
 
@@ -97,21 +98,23 @@ renderOrderTracks();
 const navBackdrop = document.getElementById("nav-backdrop");
 
 function setMenuOpen(open) {
-  nav?.classList.toggle("is-open", open);
+  mobileMenu?.classList.toggle("is-open", open);
   menuBtn?.classList.toggle("is-open", open);
-  navBackdrop?.classList.toggle("is-open", open);
+  navBackdrop?.toggleAttribute("hidden", !open);
   menuBtn?.setAttribute("aria-expanded", String(open));
+  mobileMenu?.setAttribute("aria-hidden", String(!open));
   document.body.classList.toggle("menu-open", open);
 }
 
-if (menuBtn && nav) {
+if (menuBtn && mobileMenu) {
   menuBtn.addEventListener("click", () => {
-    setMenuOpen(!nav.classList.contains("is-open"));
+    setMenuOpen(!mobileMenu.classList.contains("is-open"));
   });
 
+  menuClose?.addEventListener("click", () => setMenuOpen(false));
   navBackdrop?.addEventListener("click", () => setMenuOpen(false));
 
-  nav.querySelectorAll("a").forEach((link) => {
+  mobileMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setMenuOpen(false));
   });
 }
