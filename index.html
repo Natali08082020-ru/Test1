@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MalSu — нейропесни. Альбомы «Мысли» и «Чувства». Музыка, созданная на стыке человека и ИИ.">
+  <meta name="description" content="MalSu — нейропесни. Альбомы «Мысли» и «Чувства». Музыка Малаховой Натальи и Супрунчука Игоря. Песни на заказ.">
   <title>MalSu — нейропесни</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,12 +18,22 @@
     <span></span><span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span><span></span>
   </div>
+  <div class="floating-notes" aria-hidden="true">
+    <span class="note" style="--x:8%;--d:0s">♪</span>
+    <span class="note" style="--x:22%;--d:2s">♫</span>
+    <span class="note" style="--x:45%;--d:4s">♬</span>
+    <span class="note" style="--x:68%;--d:1s">♩</span>
+    <span class="note" style="--x:85%;--d:3s">♪</span>
+    <span class="note" style="--x:55%;--d:5s">♫</span>
+  </div>
 
   <header class="header">
     <a href="#" class="logo">Mal<span>Su</span></a>
     <nav class="nav">
       <a href="#albums">Альбомы</a>
-      <a href="#about">О проекте</a>
+      <a href="#team">О нас</a>
+      <a href="#order">На заказ</a>
+      <a href="#contact">Контакты</a>
       <a href="#listen" class="nav-cta">Слушать</a>
     </nav>
     <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false">
@@ -33,12 +43,13 @@
 
   <main>
     <section class="hero">
-      <div class="hero-visual" aria-hidden="true">
-        <div class="vinyl-spin">
+      <div class="hero-visual">
+        <div class="spectrum-ring" aria-hidden="true"></div>
+        <div class="vinyl-spin" id="hero-vinyl">
           <img src="malsu/malsu.jpg" alt="" width="280" height="280">
         </div>
       </div>
-      <div class="hero-content">
+      <div class="hero-content reveal">
         <p class="hero-tag">
           <span class="eq-dot"></span>
           Нейропесни · 2026
@@ -69,14 +80,14 @@
     </section>
 
     <section id="albums" class="albums">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="section-label">Discography</span>
         <h2>Альбомы</h2>
         <p>От размышлений к переживаниям — два релиза MalSu</p>
       </div>
 
       <div class="album-grid">
-        <article class="album-card album-card--thoughts">
+        <article class="album-card album-card--thoughts reveal">
           <a href="https://band.link/cSpGv" class="album-cover-link" target="_blank" rel="noopener noreferrer">
             <div class="album-cover">
               <img src="malsu/malsu.jpg" alt="Обложка альбома «Мысли»" width="400" height="400" loading="lazy">
@@ -102,7 +113,7 @@
           </div>
         </article>
 
-        <article class="album-card album-card--feelings">
+        <article class="album-card album-card--feelings reveal">
           <a href="https://band.link/ZTV8E" class="album-cover-link" target="_blank" rel="noopener noreferrer">
             <div class="album-cover">
               <img src="malsu/Чувства.jpg" alt="Обложка альбома «Чувства»" width="400" height="400" loading="lazy">
@@ -130,14 +141,66 @@
       </div>
     </section>
 
+    <section id="team" class="team">
+      <div class="section-head reveal">
+        <span class="section-label">Creators</span>
+        <h2>О нас</h2>
+        <p>Две творческие личности — одно имя MalSu</p>
+      </div>
+
+      <div class="team-intro reveal">
+        <p class="team-lead">
+          Проект <strong>MalSu</strong> — это две творческие личности, влюблённые
+          в рифмованные (а иногда и не очень) тексты и волшебную, завораживающую музыку:
+        </p>
+        <p class="team-names">
+          <strong>Малахова Наталья</strong> и <strong>Супрунчук Игорь</strong>.
+        </p>
+        <div class="name-formula" aria-label="Происхождение названия MalSu">
+          <span class="name-part name-part--mal"><em>Мал</em>ахова</span>
+          <span class="name-plus">+</span>
+          <span class="name-part name-part--su"><em>Су</em>прунчук</span>
+          <span class="name-equals">=</span>
+          <span class="name-result">MalSu</span>
+        </div>
+        <p class="team-sub">
+          Название проекта складывается из первых слогов наших фамилий.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <article class="team-card team-card--natalia reveal">
+          <div class="team-avatar">Н</div>
+          <h3>Малахова Наталья</h3>
+          <p class="team-role">Нейропромпт-инженер · аранжировщик</p>
+          <ul class="team-list">
+            <li>Менеджер нейросетей</li>
+            <li>Автор трёх Telegram-каналов и одного Max-канала</li>
+            <li>Аранжировщик песен проекта MalSu</li>
+            <li>Пишет песни на заказ — от идеи до реализации</li>
+          </ul>
+        </article>
+
+        <article class="team-card team-card--igor reveal">
+          <div class="team-avatar">И</div>
+          <h3>Супрунчук Игорь</h3>
+          <p class="team-role">Соавтор · творческий партнёр</p>
+          <p>
+            Соучастник вдохновения и звучания MalSu — тексты, идеи
+            и музыкальная магия дуэта.
+          </p>
+        </article>
+      </div>
+    </section>
+
     <section id="about" class="about">
-      <div class="about-content">
+      <div class="about-content reveal">
         <span class="section-label">About</span>
         <h2>Нейропесни MalSu</h2>
         <p>
           Это не «музыка робота ради робота». Каждый трек начинается с идеи,
-          настроения и сюжета — нейросети помогают с текстом, аранжировкой
-          и голосом, а финальный характер звучания остаётся авторским.
+          настроения и сюжета. <strong>Тексты песен мы пишем сами</strong> — нейросети
+          помогают с аранжировкой и голосом, а финальный характер звучания остаётся авторским.
         </p>
         <p>
           Альбом <strong>«Мысли»</strong> — про голову и тишину.
@@ -145,13 +208,32 @@
           Вместе они складываются в цельную историю проекта MalSu.
         </p>
       </div>
-      <div class="about-vinyl" aria-hidden="true">
+      <div class="about-vinyl reveal" aria-hidden="true">
         <div class="vinyl-mini"></div>
       </div>
     </section>
 
+    <section id="order" class="order">
+      <div class="section-head reveal">
+        <span class="section-label">Custom</span>
+        <h2>Песни на заказ</h2>
+        <p>Примеры работ — от идеи до готовой нейропесни</p>
+      </div>
+
+      <p class="order-lead reveal">
+        Нужна песня на праздник, признание или особый повод?
+        Послушайте примеры и напишите — создадим вашу историю в музыке.
+      </p>
+
+      <ul class="track-list" id="track-list"></ul>
+
+      <div class="order-cta reveal">
+        <a href="#contact" class="btn btn-primary">Заказать свою песню</a>
+      </div>
+    </section>
+
     <section id="listen" class="listen">
-      <div class="listen-box">
+      <div class="listen-box reveal">
         <span class="section-label">Stream</span>
         <h2>Включить MalSu</h2>
         <p>Одна ссылка — все стриминговые сервисы через Band.link</p>
@@ -175,11 +257,51 @@
         </div>
       </div>
     </section>
+
+    <section id="contact" class="contact">
+      <div class="section-head reveal">
+        <span class="section-label">Contact</span>
+        <h2>Связь со мной</h2>
+        <p>Telegram или короткая форма ниже</p>
+      </div>
+
+      <div class="contact-card reveal">
+        <a
+          href="https://t.me/natali08082020"
+          class="contact-tg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="contact-tg-label">Telegram</span>
+          <span class="contact-tg-user">@natali08082020</span>
+        </a>
+
+        <form class="contact-form" id="feedback-form">
+          <label>
+            <span>Имя</span>
+            <input type="text" name="name" required autocomplete="name" placeholder="Ваше имя">
+          </label>
+          <label>
+            <span>Контакт для ответа</span>
+            <input type="text" name="contact" required placeholder="Telegram, email или телефон">
+          </label>
+          <label>
+            <span>Сообщение</span>
+            <textarea name="message" rows="4" required placeholder="О чём песня или ваш вопрос"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-full">Отправить в Telegram</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <p>© 2026 MalSu · Нейропесни</p>
-    <a href="https://band.link/cSpGv" class="footer-link" target="_blank" rel="noopener noreferrer">Band.link</a>
+    <div class="footer-links">
+      <a href="https://t.me/natali08082020" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://band.link/cSpGv" target="_blank" rel="noopener noreferrer">Band.link</a>
+    </div>
   </footer>
 
   <script src="script.js"></script>
