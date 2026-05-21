@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="MalSu — нейропесни. Альбомы «Мысли» и «Чувства». Музыка Малаховой Натальи и Супрунчука Игоря. Песни на заказ.">
   <title>MalSu — нейропесни</title>
+  <script>
+    (function () {
+      document.documentElement.classList.remove("no-js");
+      var path = location.pathname;
+      if (path.endsWith("/index.html")) {
+        path = path.slice(0, -10);
+      } else if (/\.[a-z0-9]+$/i.test(path.split("/").pop() || "")) {
+        path = path.slice(0, path.lastIndexOf("/") + 1);
+      } else if (!path.endsWith("/")) {
+        path += "/";
+      }
+      var base = document.createElement("base");
+      base.href = location.origin + path;
+      document.head.appendChild(base);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div class="bg-vinyl" aria-hidden="true"></div>
@@ -46,7 +62,7 @@
       <div class="hero-visual">
         <div class="spectrum-ring" aria-hidden="true"></div>
         <div class="vinyl-spin" id="hero-vinyl">
-          <img src="malsu/malsu.jpg" alt="" width="280" height="280">
+          <img src="./malsu/malsu.jpg" alt="" width="280" height="280">
         </div>
       </div>
       <div class="hero-content reveal">
@@ -90,7 +106,7 @@
         <article class="album-card album-card--thoughts reveal">
           <a href="https://band.link/cSpGv" class="album-cover-link" target="_blank" rel="noopener noreferrer">
             <div class="album-cover">
-              <img src="malsu/malsu.jpg" alt="Обложка альбома «Мысли»" width="400" height="400" loading="lazy">
+              <img src="./malsu/malsu.jpg" alt="Обложка альбома «Мысли»" width="400" height="400" loading="lazy">
               <span class="album-play" aria-hidden="true"><span>▶</span></span>
               <span class="album-badge album-badge--out">В релизе</span>
             </div>
@@ -116,7 +132,7 @@
         <article class="album-card album-card--feelings reveal">
           <a href="https://band.link/ZTV8E" class="album-cover-link" target="_blank" rel="noopener noreferrer">
             <div class="album-cover">
-              <img src="malsu/Чувства.jpg" alt="Обложка альбома «Чувства»" width="400" height="400" loading="lazy">
+              <img src="./malsu/chuvstva.jpg" alt="Обложка альбома «Чувства»" width="400" height="400" loading="lazy">
               <span class="album-play" aria-hidden="true"><span>♡</span></span>
               <span class="album-badge album-badge--soon">Пресейв</span>
             </div>
@@ -239,7 +255,7 @@
         <p>Одна ссылка — все стриминговые сервисы через Band.link</p>
         <div class="listen-cards">
           <a href="https://band.link/cSpGv" class="listen-card" target="_blank" rel="noopener noreferrer">
-            <img src="malsu/malsu.jpg" alt="" width="72" height="72">
+            <img src="./malsu/malsu.jpg" alt="" width="72" height="72">
             <span class="listen-card-text">
               <strong>Мысли</strong>
               <small>Слушать сейчас</small>
@@ -247,7 +263,7 @@
             <span class="listen-arrow">▶</span>
           </a>
           <a href="https://band.link/ZTV8E" class="listen-card listen-card--presave" target="_blank" rel="noopener noreferrer">
-            <img src="malsu/Чувства.jpg" alt="" width="72" height="72">
+            <img src="./malsu/chuvstva.jpg" alt="" width="72" height="72">
             <span class="listen-card-text">
               <strong>Чувства</strong>
               <small>Пресейв альбома</small>
@@ -304,6 +320,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="./script.js" defer></script>
 </body>
 </html>

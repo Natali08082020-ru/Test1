@@ -3,12 +3,17 @@ const nav = document.querySelector(".nav");
 const TELEGRAM_URL = "https://t.me/natali08082020";
 
 const ORDER_TRACKS = [
-  { file: "С днём рождения, доченька.mp3", title: "С днём рождения, доченька", meta: "Песня на заказ · день рождения" },
-  { file: "С днем рождения, мама.mp3", title: "С днём рождения, мама", meta: "Песня на заказ · день рождения" },
-  { file: "С днем рождения, папа.mp3", title: "С днём рождения, папа", meta: "Песня на заказ · день рождения" },
-  { file: "С днем рождения, брат!.mp3", title: "С днём рождения, брат!", meta: "Песня на заказ · день рождения" },
-  { file: "Мужчины Руси (Rock).mp3", title: "Мужчины Руси (Rock)", meta: "Песня на заказ · rock" },
+  { file: "order-01.mp3", title: "С днём рождения, доченька", meta: "Песня на заказ · день рождения" },
+  { file: "order-02.mp3", title: "С днём рождения, мама", meta: "Песня на заказ · день рождения" },
+  { file: "order-03.mp3", title: "С днём рождения, папа", meta: "Песня на заказ · день рождения" },
+  { file: "order-04.mp3", title: "С днём рождения, брат!", meta: "Песня на заказ · день рождения" },
+  { file: "order-05.mp3", title: "Мужчины Руси (Rock)", meta: "Песня на заказ · rock" },
 ];
+
+function assetUrl(path) {
+  const base = document.querySelector("base")?.href || `${location.origin}/`;
+  return new URL(path.replace(/^\.\//, ""), base).href;
+}
 
 function copyText(text) {
   if (navigator.clipboard?.writeText) {
@@ -34,7 +39,7 @@ function renderOrderTracks() {
 
   list.innerHTML = ORDER_TRACKS.map((track, i) => {
     const num = String(i + 1).padStart(2, "0");
-    const src = `audio/${encodeURIComponent(track.file)}`;
+    const src = assetUrl(`audio/${track.file}`);
     return `
       <li class="track-item reveal" data-track>
         <div class="track-info">
