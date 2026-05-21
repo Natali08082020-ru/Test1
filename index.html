@@ -52,10 +52,11 @@
       <a href="#contact">Контакты</a>
       <a href="#listen" class="nav-cta">Слушать</a>
     </nav>
-    <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false">
+    <button class="menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </header>
+  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
   <main>
     <section class="hero">
@@ -305,7 +306,7 @@
             <span>Сообщение</span>
             <textarea name="message" rows="4" required placeholder="О чём песня или ваш вопрос"></textarea>
           </label>
-          <button type="submit" class="btn btn-primary btn-full">Отправить в Telegram</button>
+          <button type="submit" class="btn btn-primary btn-full">Отправить заявку в Telegram</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>

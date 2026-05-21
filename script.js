@@ -1,6 +1,15 @@
 const menuBtn = document.querySelector(".menu-btn");
 const nav = document.querySelector(".nav");
-const TELEGRAM_URL = "https://t.me/natali08082020";
+const TELEGRAM_USER = "natali08082020";
+const TELEGRAM_URL = `https://t.me/${TELEGRAM_USER}`;
+
+function telegramMessageUrl(text) {
+  return `${TELEGRAM_URL}?text=${encodeURIComponent(text)}`;
+}
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+}
 
 const ORDER_TRACKS = [
   { file: "order-01.mp3", title: "С днём рождения, доченька", meta: "Песня на заказ · день рождения" },
@@ -85,19 +94,25 @@ function renderOrderTracks() {
 
 renderOrderTracks();
 
+const navBackdrop = document.getElementById("nav-backdrop");
+
+function setMenuOpen(open) {
+  nav?.classList.toggle("is-open", open);
+  menuBtn?.classList.toggle("is-open", open);
+  navBackdrop?.classList.toggle("is-open", open);
+  menuBtn?.setAttribute("aria-expanded", String(open));
+  document.body.classList.toggle("menu-open", open);
+}
+
 if (menuBtn && nav) {
   menuBtn.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
-    menuBtn.classList.toggle("is-open", open);
-    menuBtn.setAttribute("aria-expanded", String(open));
+    setMenuOpen(!nav.classList.contains("is-open"));
   });
 
+  navBackdrop?.addEventListener("click", () => setMenuOpen(false));
+
   nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      menuBtn.classList.remove("is-open");
-      menuBtn.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", () => setMenuOpen(false));
   });
 }
 
@@ -195,16 +210,24 @@ if (form) {
       message,
     ].join("\n");
 
+    const tgUrl = telegramMessageUrl(text);
+
     try {
       await copyText(text);
     } catch {
-      /* копирование не обязательно */
+      /* запасной вариант — текст в URL */
     }
 
-    window.open(TELEGRAM_URL, "_blank");
+    if (isMobileDevice()) {
+      location.href = tgUrl;
+    } else {
+      const opened = window.open(tgUrl, "_blank");
+      if (!opened) location.href = tgUrl;
+    }
 
     if (formStatus) {
-      formStatus.textContent = "Откройте Telegram, вставьте сообщение (Ctrl+V) и отправьте.";
+      formStatus.textContent =
+        "Откроется Telegram с вашим текстом. Проверьте сообщение и нажмите «Отправить».";
       formStatus.classList.remove("is-error");
     }
   });
