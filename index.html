@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MalSu — нейропесни. Альбомы «Мысли» и «Чувства». Музыка, созданная на стыке человека и ИИ.">
+  <title>MalSu — нейропесни</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="header">
+    <a href="#" class="logo">Mal<span>Su</span></a>
+    <nav class="nav">
+      <a href="#albums">Альбомы</a>
+      <a href="#about">О проекте</a>
+      <a href="#listen" class="nav-cta">Слушать</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero-tag">Нейропесни · 2025</p>
+      <h1 class="hero-title">
+        Музыка,<br>
+        <span class="gradient-text">рождённая в синтезе</span>
+      </h1>
+      <p class="hero-lead">
+        Проект MalSu — это альбомы, где текст, мелодия и эмоция собираются
+        вместе с помощью нейросетей и живого авторского замысла.
+      </p>
+      <div class="hero-actions">
+        <a href="#albums" class="btn btn-primary">Слушать альбомы</a>
+        <a href="#about" class="btn btn-ghost">Узнать больше</a>
+      </div>
+      <div class="hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+          <path d="M0,40 Q150,0 300,40 T600,40 T900,40 T1200,40 L1200,80 L0,80 Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+
+    <section id="albums" class="albums">
+      <div class="section-head">
+        <h2>Альбомы</h2>
+        <p>Два полноценных релиза — от размышлений к переживаниям</p>
+      </div>
+
+      <div class="album-grid">
+        <article class="album-card album-card--thoughts">
+          <div class="album-cover">
+            <span class="album-icon" aria-hidden="true">◈</span>
+          </div>
+          <div class="album-body">
+            <span class="album-num">01</span>
+            <h3>Мысли</h3>
+            <p>
+              Интроспективный альбом: внутренние монологи, сомнения,
+              тихие открытия. Звук ближе к поэзии, чем к поп-хиту.
+            </p>
+            <ul class="album-tags">
+              <li>рефлексия</li>
+              <li>атмосфера</li>
+              <li>лирика</li>
+            </ul>
+            <a href="#listen" class="album-link" data-album="mysli">Слушать «Мысли» →</a>
+          </div>
+        </article>
+
+        <article class="album-card album-card--feelings">
+          <div class="album-cover">
+            <span class="album-icon" aria-hidden="true">♡</span>
+          </div>
+          <div class="album-body">
+            <span class="album-num">02</span>
+            <h3>Чувства</h3>
+            <p>
+              Эмоциональный контрапункт: любовь, тоска, надежда и вспышки
+              радости — всё, что не укладывается в слова.
+            </p>
+            <ul class="album-tags">
+              <li>эмоции</li>
+              <li>мелодия</li>
+              <li>динамика</li>
+            </ul>
+            <a href="#listen" class="album-link" data-album="chuvstva">Слушать «Чувства» →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-content">
+        <h2>Что такое нейропесни MalSu?</h2>
+        <p>
+          Это не «музыка робота ради робота». Каждый трек начинается с идеи,
+          настроения и сюжета — нейросети помогают с текстом, аранжировкой
+          и голосом, а финальный характер звучания остаётся авторским.
+        </p>
+        <p>
+          Альбом <strong>«Мысли»</strong> — про голову и тишину.
+          <strong>«Чувства»</strong> — про сердце и движение.
+          Вместе они складываются в цельную историю проекта MalSu.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-value">2</span>
+          <span class="stat-label">альбома</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">AI+</span>
+          <span class="stat-label">авторский синтез</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">∞</span>
+          <span class="stat-label">настроений</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="listen" class="listen">
+      <div class="listen-box">
+        <h2>Слушайте MalSu</h2>
+        <p>Выберите площадку и включите альбомы «Мысли» и «Чувства».</p>
+        <div class="platforms">
+          <a href="#" class="platform" title="Яндекс Музыка">Яндекс</a>
+          <a href="#" class="platform" title="VK Музыка">VK</a>
+          <a href="#" class="platform" title="YouTube">YouTube</a>
+          <a href="#" class="platform" title="Telegram">Telegram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 MalSu · Нейропесни</p>
+    <a href="#" class="footer-link">Связаться</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
