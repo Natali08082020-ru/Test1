@@ -59,11 +59,39 @@
     <section class="hero">
       <div class="hero__layout">
         <div class="hero__visual reveal">
-          <div class="hero__disc-frame">
-            <div class="hero__disc" id="hero-vinyl">
-              <img src="./malsu/malsu.jpg" alt="" width="320" height="320">
+          <div class="hero__stage">
+            <div
+              id="hero-magic-rings"
+              class="magic-rings-container"
+              data-magic-rings
+              data-color="#A855F7"
+              data-color-two="#6366F1"
+              data-ring-count="6"
+              data-speed="1"
+              data-attenuation="10"
+              data-line-thickness="2"
+              data-base-radius="0.35"
+              data-radius-step="0.1"
+              data-scale-rate="0.1"
+              data-opacity="0.92"
+              data-blur="0"
+              data-noise-amount="0.1"
+              data-rotation="0"
+              data-ring-gap="1.5"
+              data-fade-in="0.7"
+              data-fade-out="0.5"
+              data-follow-mouse="false"
+              data-mouse-influence="0.2"
+              data-hover-scale="1.2"
+              data-parallax="0.05"
+              data-click-burst="false"
+              aria-hidden="true"
+            ></div>
+            <div class="hero__disc-frame">
+              <div class="hero__disc" id="hero-vinyl">
+                <img src="./malsu/malsu.jpg" alt="" width="320" height="320">
+              </div>
             </div>
-            <div class="hero__disc-ring" aria-hidden="true"></div>
           </div>
         </div>
         <div class="hero__copy">
@@ -263,6 +291,14 @@
     </div>
   </footer>
 
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+  <script type="module" src="./magic-rings.js"></script>
   <script src="./script.js" defer></script>
 </body>
 </html>

@@ -7,6 +7,8 @@
   --muted: #9c948a;
   --amber: #d9a85c;
   --ember: #c4644a;
+  --violet: #a855f7;
+  --indigo: #6366f1;
   --rose: #9a7ab8;
   --lilac: rgba(154, 124, 198, 0.15);
   --lilac-border: rgba(186, 158, 235, 0.45);
@@ -61,8 +63,9 @@ a {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 60% at 15% -10%, rgba(196, 100, 74, 0.18), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 95% 20%, rgba(154, 124, 198, 0.12), transparent 50%),
+    radial-gradient(ellipse 70% 55% at 20% 15%, rgba(168, 85, 247, 0.14), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 85% 25%, rgba(99, 102, 241, 0.1), transparent 50%),
+    radial-gradient(ellipse 90% 60% at 15% -10%, rgba(196, 100, 74, 0.14), transparent 55%),
     radial-gradient(ellipse 50% 40% at 50% 100%, rgba(217, 168, 92, 0.08), transparent 45%);
 }
 
@@ -266,20 +269,55 @@ body.is-loaded .hero__title-line--accent {
   position: relative;
 }
 
+.hero__stage {
+  position: relative;
+  width: min(480px, 94vw);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.magic-rings-container {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.magic-rings-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.magic-rings-container--fallback {
+  background: radial-gradient(
+    circle at center,
+    rgba(168, 85, 247, 0.12) 0%,
+    rgba(99, 102, 241, 0.06) 45%,
+    transparent 70%
+  );
+}
+
 .hero__disc-frame {
   position: relative;
+  z-index: 2;
 }
 
 .hero__disc {
-  width: min(300px, 72vw);
+  width: min(240px, 52vw);
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
   z-index: 2;
   box-shadow:
-    0 0 0 3px rgba(255, 255, 255, 0.04),
-    0 24px 80px rgba(0, 0, 0, 0.65);
+    0 0 0 2px rgba(168, 85, 247, 0.2),
+    0 0 48px rgba(99, 102, 241, 0.25),
+    0 24px 64px rgba(0, 0, 0, 0.55);
   animation: disc-spin 28s linear infinite;
 }
 
@@ -293,21 +331,8 @@ body.is-loaded .hero__title-line--accent {
   object-fit: cover;
 }
 
-.hero__disc-ring {
-  position: absolute;
-  inset: -14px;
-  border-radius: 50%;
-  border: 1px solid rgba(217, 168, 92, 0.25);
-  animation: ring-pulse 4s ease-in-out infinite;
-}
-
 @keyframes disc-spin {
   to { transform: rotate(360deg); }
-}
-
-@keyframes ring-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.04); opacity: 1; }
 }
 
 .hero__copy {
@@ -343,7 +368,10 @@ body.is-loaded .hero__title-line--accent {
 
 .hero__title-line--accent {
   font-style: italic;
-  color: var(--amber);
+  background: linear-gradient(120deg, var(--violet), var(--indigo), var(--amber));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin-top: 0.15em;
 }
 
@@ -1112,6 +1140,21 @@ body.is-loaded .hero__title-line--accent {
     min-height: auto;
   }
 
+  .hero__stage {
+    width: min(360px, 88vw);
+  }
+
+  .hero__disc {
+    width: min(200px, 48vw);
+  }
+
+  .magic-rings-container {
+    inset: -5%;
+    width: 110%;
+    height: 110%;
+    opacity: 0.85;
+  }
+
   .hero__visual {
     order: -1;
   }
@@ -1144,11 +1187,14 @@ body.is-loaded .hero__title-line--accent {
 
 @media (prefers-reduced-motion: reduce) {
   .hero__disc,
-  .hero__disc-ring,
   .track-item.is-playing .track-bars span,
   .reveal {
     animation: none !important;
     transition: none !important;
+  }
+
+  .magic-rings-container {
+    display: none;
   }
 
   html.no-js .reveal,
