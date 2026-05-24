@@ -40,11 +40,37 @@ function copyText(text) {
   return ok ? Promise.resolve() : Promise.reject();
 }
 
+function observeReveals(root = document) {
+  const els = root.querySelectorAll(".reveal:not(.is-visible)");
+  els.forEach((el, i) => {
+    el.style.setProperty("--reveal-i", String(i % 10));
+  });
+
+  if (!("IntersectionObserver" in window)) {
+    els.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+  );
+
+  els.forEach((el) => observer.observe(el));
+}
+
 function renderOrderTracks() {
   const list = document.getElementById("track-list");
   if (!list) return;
 
-  const bars = "<span></span>".repeat(10);
+  const bars = "<span></span>".repeat(8);
 
   list.innerHTML = ORDER_TRACKS.map((track, i) => {
     const num = String(i + 1).padStart(2, "0");
@@ -70,29 +96,16 @@ function renderOrderTracks() {
     `;
   }).join("");
 
-  list.querySelectorAll(".reveal").forEach((el) => {
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-      );
-      observer.observe(el);
-    } else {
-      el.classList.add("is-visible");
-    }
-  });
-
+  observeReveals(list);
   initAudioPlayers();
 }
 
 renderOrderTracks();
+observeReveals();
+
+window.addEventListener("load", () => {
+  document.body.classList.add("is-loaded");
+});
 
 const navBackdrop = document.getElementById("nav-backdrop");
 
@@ -108,30 +121,10 @@ if (menuBtn && mobileMenu) {
   menuBtn.addEventListener("click", () => {
     setMenuOpen(!mobileMenu.classList.contains("is-open"));
   });
-
   navBackdrop?.addEventListener("click", () => setMenuOpen(false));
-
   mobileMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setMenuOpen(false));
   });
-}
-
-const revealEls = document.querySelectorAll(".reveal");
-if (revealEls.length && "IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-  );
-  revealEls.forEach((el) => observer.observe(el));
-} else {
-  revealEls.forEach((el) => el.classList.add("is-visible"));
 }
 
 const heroVinyl = document.getElementById("hero-vinyl");
@@ -165,17 +158,13 @@ function initAudioPlayers() {
         stopCurrent();
         return;
       }
-
       stopCurrent();
       currentAudio = audio;
       currentTrackItem = item;
       item.classList.add("is-playing");
       btn.setAttribute("aria-label", "Пауза");
       if (heroVinyl) heroVinyl.classList.add("is-playing");
-
-      audio.play().catch(() => {
-        stopCurrent();
-      });
+      audio.play().catch(() => stopCurrent());
     });
 
     audio.addEventListener("ended", stopCurrent);
@@ -215,7 +204,7 @@ if (form) {
     try {
       await copyText(text);
     } catch {
-      /* запасной вариант — текст в URL */
+      /* текст также в URL */
     }
 
     if (isMobileDevice()) {
@@ -227,7 +216,7 @@ if (form) {
 
     if (formStatus) {
       formStatus.textContent =
-        "Откроется Telegram с вашим текстом. Проверьте сообщение и нажмите «Отправить».";
+        "Откроется Telegram с вашим текстом. Проверьте и нажмите «Отправить».";
       formStatus.classList.remove("is-error");
     }
   });
